@@ -8,7 +8,7 @@
       "type": "demo_widget",
       "imageName": "demo_widget",
       "content": {
-        "endpoint": "./widgets/demo_widget/content.html",
+        "endpoint": "https://raw.githubusercontent.com/gs-marekkoszlak/cc-widgets-demo/refs/heads/sandbox/widgets/demo_widget/content.html",
         "method": "GET",
         "requiresAuthentication": false,
         "cacheStrategy": "no-cache"
@@ -33,7 +33,7 @@
       "type": "react_hello_world",
       "imageName": "react_hello_world",
       "content": {
-        "endpoint": "./widgets/react_hello_world/content.html",
+        "endpoint": "https://raw.githubusercontent.com/gs-marekkoszlak/cc-widgets-demo/refs/heads/sandbox/widgets/react_hello_world/content.html",
         "method": "GET",
         "requiresAuthentication": false,
         "cacheStrategy": "no-cache"
