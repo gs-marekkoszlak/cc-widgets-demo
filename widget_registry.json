@@ -24,6 +24,31 @@
         "shared": false,
         "movable": false
       }
+    },
+    {
+      "title": "MLab Connect 2027 Banner",
+      "description": "Promotional banner for MLab Connect 2027",
+      "version": "1.0.0",
+      "category": "Promotional",
+      "type": "mlab_connect_banner_2027",
+      "imageName": "mlab_connect_banner_2027",
+      "content": {
+        "endpoint": "./widgets/mlab_connect_banner_2027/content.html",
+        "method": "GET",
+        "requiresAuthentication": false,
+        "cacheStrategy": "no-cache"
+      },
+      "containers": [
+        "Full width"
+      ],
+      "widgetsLibrary": true,
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": false
+      }
     }
   ]
 }
