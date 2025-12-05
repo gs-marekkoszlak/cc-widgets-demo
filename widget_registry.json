@@ -1,10 +1,10 @@
 {
   "widgets": [
     {
-      "title": "Demo widget",
+      "title": "MK Test Demo widget",
       "description": "Demo widget for presentation purposes",
       "version": "1.0.0",
-      "category": "Demo",
+      "category": "MK Test Demo",
       "type": "demo_widget",
       "imageName": "demo_widget",
       "content": {
@@ -26,10 +26,10 @@
       }
     },
     {
-      "title": "Hello World Widget",
+      "title": "MK Test Hello World Widget",
       "description": "A simple React widget displaying Hello World with custom styling",
       "version": "1.0.0",
-      "category": "Demo",
+      "category": "MK Test Demo",
       "type": "react_hello_world",
       "imageName": "react_hello_world",
       "content": {
