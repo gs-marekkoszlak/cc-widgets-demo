@@ -5,7 +5,7 @@
       "description": "Demo widget for presentation purposes",
       "version": "1.0.1",
       "category": "MK Test Demo",
-      "type": "demo_widget",
+      "type": "MK Test demo_widget",
       "imageName": "demo_widget",
       "content": {
         "endpoint": "https://raw.githubusercontent.com/gs-marekkoszlak/cc-widgets-demo/refs/heads/sandbox/widgets/demo_widget/content.html",
@@ -30,7 +30,7 @@
       "description": "A simple React widget displaying Hello World with custom styling",
       "version": "1.0.1",
       "category": "MK Test Demo",
-      "type": "react_hello_world",
+      "type": "MK Test react_hello_world",
       "imageName": "react_hello_world",
       "content": {
         "endpoint": "https://raw.githubusercontent.com/gs-marekkoszlak/cc-widgets-demo/refs/heads/sandbox/widgets/react_hello_world/content.html",
