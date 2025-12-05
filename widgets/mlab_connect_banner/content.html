@@ -2,59 +2,67 @@
 <html>
 <head>
     <style>
-        :root {
-            --mlab-purple: #5D3393;
-            --mlab-dark-purple: #2A0F55;
-            --mlab-orange: #FF6B00;
-            --mlab-text: #FFFFFF;
-        }
-        
-        body {
+        /* Scoped Root Configuration */
+        #mlab-connect-widget-root {
+            --mlab-widget-purple: #5D3393;
+            --mlab-widget-dark-purple: #2A0F55;
+            --mlab-widget-orange: #FF6B00;
+            --mlab-widget-text: #FFFFFF;
+            
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            width: 100%;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            overflow: hidden;
+            box-sizing: border-box;
+            line-height: 1.5;
         }
 
-        .banner-container {
+        #mlab-connect-widget-root * {
+            box-sizing: border-box;
+        }
+
+        .mlab-banner-container {
             width: 100%;
             min-height: 200px;
-            background: linear-gradient(-45deg, var(--mlab-dark-purple), var(--mlab-purple), #9C27B0, var(--mlab-orange));
+            /* Explicitly set background to avoid transparency or inheritance issues */
+            background-color: #2A0F55; 
+            background: linear-gradient(-45deg, var(--mlab-widget-dark-purple), var(--mlab-widget-purple), #9C27B0, var(--mlab-widget-orange));
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: mlabGradientBG 15s ease infinite;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: var(--mlab-text);
+            color: var(--mlab-widget-text);
             border-radius: 12px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             position: relative;
             overflow: hidden;
             padding: 20px;
-            box-sizing: border-box;
+            text-align: center; /* Ensure centering is explicit */
         }
 
         /* Fluid shapes overlay */
-        .shape {
+        .mlab-shape {
             position: absolute;
             filter: blur(50px);
             opacity: 0.4;
             z-index: 0;
-            animation: float 6s ease-in-out infinite;
+            animation: mlabFloat 6s ease-in-out infinite;
+            pointer-events: none; /* Ensure clicks pass through */
         }
 
-        .shape-1 {
+        .mlab-shape-1 {
             top: -50%;
             left: -10%;
             width: 300px;
             height: 300px;
-            background: var(--mlab-orange);
+            background: var(--mlab-widget-orange);
             border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
             animation-delay: 0s;
         }
 
-        .shape-2 {
+        .mlab-shape-2 {
             bottom: -50%;
             right: -10%;
             width: 400px;
@@ -64,15 +72,16 @@
             animation-delay: -3s;
         }
 
-        .content {
+        .mlab-content {
             z-index: 1;
             text-align: center;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards 0.5s;
+            animation: mlabFadeInUp 0.8s ease-out forwards 0.5s;
+            position: relative; /* Create stacking context */
         }
 
-        .event-tag {
+        .mlab-event-tag {
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 2px;
@@ -83,20 +92,24 @@
             display: inline-block;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white; /* Force white color */
         }
 
-        h1 {
+        .mlab-title {
             font-size: 3rem;
             margin: 0 0 10px 0;
             font-weight: 700;
             line-height: 1.1;
+            color: white; /* Fallback color */
             background: linear-gradient(to right, #fff, #ffd1b3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            /* Ensure specificity overrides global h1 styles */
+            font-family: inherit; 
         }
 
-        .date {
+        .mlab-date {
             font-size: 1.25rem;
             font-weight: 500;
             margin-bottom: 24px;
@@ -107,45 +120,48 @@
             gap: 8px;
         }
 
-        .date-icon {
+        .mlab-date-icon {
             width: 20px;
             height: 20px;
             fill: currentColor;
+            display: block; /* Prevent inline spacing issues */
         }
 
-        .cta-button {
+        .mlab-cta-button {
             background: white;
-            color: var(--mlab-dark-purple);
+            color: var(--mlab-widget-dark-purple) !important; /* Force color against link styles */
             padding: 12px 32px;
             border-radius: 30px;
             font-weight: 600;
             font-size: 1rem;
-            text-decoration: none;
+            text-decoration: none !important; /* Remove underlines */
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             border: none;
             cursor: pointer;
             display: inline-block;
+            line-height: normal;
         }
 
-        .cta-button:hover {
+        .mlab-cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: #f0f0f0;
         }
 
-        @keyframes gradientBG {
+        @keyframes mlabGradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        @keyframes float {
+        @keyframes mlabFloat {
             0% { transform: translate(0, 0) rotate(0deg); }
             50% { transform: translate(20px, 20px) rotate(5deg); }
             100% { transform: translate(0, 0) rotate(0deg); }
         }
 
-        @keyframes fadeInUp {
+        @keyframes mlabFadeInUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -154,29 +170,39 @@
     </style>
 </head>
 <body>
-    <div class="banner-container">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        
-        <div class="content">
-            <div class="event-tag">Upcoming Event</div>
-            <h1>MLab Connect 2025</h1>
-            <div class="date">
-                <svg class="date-icon" viewBox="0 0 24 24">
-                    <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
-                </svg>
-                December 12-14, 2025
+    <div id="mlab-connect-widget-root">
+        <div class="mlab-banner-container">
+            <div class="mlab-shape mlab-shape-1"></div>
+            <div class="mlab-shape mlab-shape-2"></div>
+            
+            <div class="mlab-content">
+                <div class="mlab-event-tag">Upcoming Event</div>
+                <h1 class="mlab-title">MLab Connect 2025</h1>
+                <div class="mlab-date">
+                    <svg class="mlab-date-icon" viewBox="0 0 24 24">
+                        <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
+                    </svg>
+                    December 12-14, 2025
+                </div>
+                <a href="#" class="mlab-cta-button">Register Now</a>
             </div>
-            <a href="#" class="cta-button">Register Now</a>
         </div>
     </div>
 
     <script>
-        // Simple interactivity for the CTA
-        document.querySelector('.cta-button').addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Registration opening soon!');
-        });
+        // Simple interactivity for the CTA, scoped to our root to avoid conflicts
+        (function() {
+            const root = document.getElementById('mlab-connect-widget-root');
+            if (root) {
+                const btn = root.querySelector('.mlab-cta-button');
+                if (btn) {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        alert('Registration opening soon!');
+                    });
+                }
+            }
+        })();
     </script>
 </body>
 </html>
