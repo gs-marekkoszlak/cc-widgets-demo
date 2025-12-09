@@ -49,6 +49,32 @@
         "shared": false,
         "movable": false
       }
+    },
+    {
+      "title": "Zendesk Ticket Submit",
+      "description": "Submit a support ticket to Zendesk",
+      "version": "1.0.0",
+      "category": "Support",
+      "type": "zendesk_ticket_submit",
+      "imageName": "zendesk_ticket_submit",
+      "content": {
+        "endpoint": "./widgets/zendesk_ticket_submit/content.html",
+        "method": "GET",
+        "requiresAuthentication": false,
+        "cacheStrategy": "no-cache"
+      },
+      "containers": [
+        "Sidebar",
+        "Full width"
+      ],
+      "widgetsLibrary": true,
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": true
+      }
     }
   ]
 }
